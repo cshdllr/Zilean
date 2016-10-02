@@ -11,9 +11,10 @@ import Style from './Style';
 
 export default class TimeDisplay extends Component {
   render() {
-
     return (
-      <Text style={Style.time}>{this.getInitialTime()}</Text>
+      <TouchableHighlight onPress={this._onTimeTap()}>
+        <Text style={Style.time}>{this.getInitialTime()}</Text>
+      </TouchableHighlight>
     )
   }
 
@@ -21,7 +22,7 @@ export default class TimeDisplay extends Component {
     let h0 = moment().format('h');
     let m0 = moment().format('mm');
 
-    if (m0 > 20) {
+    if (m0 > 15) {
       let m1 = 55;
       let h1 = h0;
       return h1 + ":" + m1;
@@ -30,6 +31,9 @@ export default class TimeDisplay extends Component {
       let h1 = h0;
       return h1 + ":" + m1;
     }
+  }
 
+  _onTimeTap() {
+    console.log("lol")
   }
 }
