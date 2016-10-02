@@ -20,7 +20,7 @@ var Style = StyleSheet.create({
   time: {
     textAlign: 'center',
     color: '#3b5998',
-    fontSize: 34,
+    fontSize: 68,
   }
 });
 
