@@ -12,8 +12,7 @@ import Style from './Style';
 
 class Time extends React.Component {
   static defaultProps = {
-    hour: 12,
-    minute: 12,
+    time: ''
   }
 
   _onTimeTap() {
@@ -22,35 +21,27 @@ class Time extends React.Component {
 
   render() {
     return (
-      <TouchableHighlight onPress={this._onTimeTap()}>
-        <Text style={Style.time}>{this.props.hour}:{this.props.minute}</Text>
-      </TouchableHighlight>
+      <View>
+        <TouchableHighlight onPress={this._onTimeTap()}>
+          <Text style={Style.time}>
+            {this.props.time}
+          </Text>
+        </TouchableHighlight>
+      </View>
     );
   }
 }
 
 export default class TimeDisplay extends React.Component {
 
-  getInitialHour() {
-    return moment().format('h');
-  }
-
-  getInitialMinute() {
-    let m0 = moment().format('mm');
-
-    if (m0 > 15) {
-      let m1 = 55;
-      return m1;
-    } else {
-      let m1 = 25;
-      return m1;
-    }
+  getInitialTime() {
+    return moment().format('h:mm A');
   }
 
   render() {
     return (
       <View>
-          <Time hour={this.getInitialHour()} minute={this.getInitialMinute()}/>
+          <Time time={this.getInitialTime()} />
       </View>
     )
   }
